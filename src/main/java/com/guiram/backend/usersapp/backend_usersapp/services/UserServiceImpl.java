@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
             User dbUser = o.orElseThrow();
             dbUser.setUsername(user.getUsername());
             dbUser.setEmail(user.getEmail());
-            Optional.ofNullable(this.save(dbUser));
+            return Optional.ofNullable(this.save(dbUser));
         }
         return Optional.empty();
     }
