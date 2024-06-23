@@ -2,9 +2,8 @@ package com.guiram.backend.usersapp.backend_usersapp.auth;
 
 import java.security.Key;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.Jwts;;
+
 
 public class TokenJwtConfig {
     // public final static String SECRET_KEY = "algun_token_con_una_frase_secreta";
