@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.guiram.backend.usersapp.backend_usersapp.models.dto.UserDto;
 import com.guiram.backend.usersapp.backend_usersapp.models.entities.User;
 import com.guiram.backend.usersapp.backend_usersapp.models.request.UserRequest;
 import com.guiram.backend.usersapp.backend_usersapp.services.UserService;
@@ -34,13 +35,13 @@ public class UserController {
     private UserService service;
 
     @GetMapping
-    public List<User> list() {
+    public List<UserDto> list() {
         return service.findAll();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> show(@PathVariable Long id) {
-        Optional<User> userOptional = service.findById(id);
+        Optional<UserDto> userOptional = service.findById(id);
 
         if (userOptional.isPresent()) {
             return ResponseEntity.ok(userOptional.orElseThrow());
@@ -58,7 +59,7 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@Valid @RequestBody UserRequest user, BindingResult result, @PathVariable Long id) {
-        Optional<User> o = service.update(user, id);
+        Optional<UserDto> o = service.update(user, id);
         if (result.hasErrors()) {
             return validation(result);
         }
@@ -70,7 +71,7 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
-        Optional<User> o = service.findById(id);
+        Optional<UserDto> o = service.findById(id);
         if (o.isPresent()) {
             service.remove(id);
             return ResponseEntity.noContent().build();
