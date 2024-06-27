@@ -1,8 +1,8 @@
 package com.guiram.backend.usersapp.backend_usersapp.models.dto;
 
 public class UserDto {
-    private String username;
     private Long id;
+    private String username;
     private String email;
 
     public UserDto(Long id, String username, String email) {
