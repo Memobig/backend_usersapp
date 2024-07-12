@@ -71,6 +71,7 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
+        System.err.println("el id es. " + id);
         Optional<UserDto> o = service.findById(id);
         if (o.isPresent()) {
             service.remove(id);
